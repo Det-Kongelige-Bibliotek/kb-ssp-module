@@ -1,0 +1,34 @@
+{
+  "renew_pass_header": {
+    "da": "Din adgangskode udl\u00F8ber om DAYS dage - vi opfordrer dig til at forny den med det samme",
+    "en": "Your password expires in DAYS days - we advise you to change it now."
+  },
+  "renew_error_header": {
+    "da": "Fejl",
+    "en": "Error"
+  },
+  "renew_pass_text": {
+    "da": "Adgangskoden skal v\u00E6re p\u00E5 mindst 8 tegn og best\u00E5 af b\u00E5de bogstaver og tal. Din nye adgangskode m\u00E5 ikke v\u00E6re identisk med den gamle.",
+    "en": "The password must be at least 8 characters and consist of both letters and numbers. Your new password must not be the same as your old password."
+  },
+  "oldpassword": {
+    "da":"Gammel Adgangskode",
+    "en":"Old password"
+  },
+  "newpassword1": {
+    "da":"Ny Adgangskode",
+    "en":"New password"
+  },
+  "newpassword2": {
+    "da":"Gentag ny adgangangskode",
+    "en":"Repeat new password"
+  },
+  "renew_password": {
+    "da": "OK",
+    "en": "OK"
+  },
+  "renew_skip": {
+    "da": "Senere",
+    "en": "Skip"
+  }
+}

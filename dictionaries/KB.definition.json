@@ -1,0 +1,10 @@
+{
+  "renew_pass_header": {"en": "Your password expires in DAYS days - we advise you to change it now."},
+  "renew_error_header": {"en": "Error"},
+  "renew_pass_text": {"en": "The password must be at least 8 characters and consist of both letters and numbers. Your new password must not be the same as your old password."},
+  "oldpassword": {"en":"Old password"},
+  "newpassword1": {"en":"New password"},
+  "newpassword2": {"en":"Repeat new password"},
+  "renew_password": {"en": "OK"},
+  "renew_skip": {"en": "Skip"}
+}
