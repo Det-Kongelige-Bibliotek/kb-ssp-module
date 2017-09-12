@@ -9,7 +9,6 @@ class sspmod_KB_Auth_Source_BrugerbaseAuth extends sspmod_core_Auth_UserPassBase
 		
         // Call the parent constructor first, as required by the interface
         parent::__construct($info, $config);
-		
 		$this->brugerbase = new sspmod_KB_BrugerbaseClient($config['brugerbaseBaseURL']);
 	 }
  
