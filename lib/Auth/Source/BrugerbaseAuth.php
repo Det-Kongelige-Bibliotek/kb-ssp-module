@@ -40,6 +40,7 @@ class sspmod_KB_Auth_Source_BrugerbaseAuth extends sspmod_core_Auth_UserPassBase
 					$attributes['mail'][] = $userattr['val'];
 				}
 			}
+		  	$attributes['loginId'] = array($user['loginId']);
 			return $attributes;
         }
 
