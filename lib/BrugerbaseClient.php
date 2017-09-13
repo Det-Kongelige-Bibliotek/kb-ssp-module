@@ -5,6 +5,7 @@
 		
 		private $loginURI = '/admin/rest/login';
 		private $expireURI = '/admin/rest/expire';
+		private $blockedURI = '/admin/rest/blocked';
 		private $resetPwdURI = '/admin/rest/resetpwd';
 
 		public function __construct($baseURL) {
@@ -42,7 +43,8 @@
 		public function expire($username) {
 			$url = \SimpleSAML\Utils\HTTP::addURLParameters($this->baseURL . $this->expireURI,
 							array('id' => $username));
-			list($result,$respHeaders) =  \SimpleSAML\Utils\HTTP::fetch($url,array(),TRUE);
+			list($result,$respHeaders) =  \SimpleSAML\Utils\HTTP::fetch($url,
+				array('http'=>array('ignore_errors' => TRUE)),TRUE);
 			
 			if(!isset($respHeaders)) {
 				// No response headers, this means the request failed in some way, so re-use old data
@@ -58,6 +60,32 @@
 			    SimpleSAML_Logger::error('Brugerbase expire unexpected response code '.$respHeaders[0]);
 				throw new SimpleSAML_Error_Exception('BRUGERBASENOTRESPONDING');		
 		   }
+		}
+
+		public function blocked($username) {
+			$url = \SimpleSAML\Utils\HTTP::addURLParameters($this->baseURL . $this->blockedURI,
+				array('id' => $username));
+			list($result,$respHeaders) =  \SimpleSAML\Utils\HTTP::fetch($url,
+				array('http'=>array('ignore_errors' => TRUE)),TRUE);
+
+			if(!isset($respHeaders)) {
+				// No response headers, this means the request failed in some way, so re-use old data
+				SimpleSAML_Logger::error('No response from brugerbase getting expire for user '.$username);
+				throw new SimpleSAML_Error_Error('BRUGERBASENOTRESPONDING');
+			} elseif(preg_match('@^HTTP/1\.[01]\s200\s@', $respHeaders[0])) {
+				// 200 response - login OK
+				if (strpos($result,'true') !== false) {
+					return TRUE;
+				}
+				if (strpos($result,'false') !== false) {
+					return FALSE;
+				}
+				SimpleSAML_Logger::error('Brugerbase blocked unexpected response '.$result);
+				throw new SimpleSAML_Error_Exception('BRUGERBASENOTRESPONDING');
+			} else {
+				SimpleSAML_Logger::error('Brugerbase expire unexpected response code '.$respHeaders[0]);
+				throw new SimpleSAML_Error_Exception('BRUGERBASENOTRESPONDING');
+			}
 		}
 
 		public function resetpwd($userid,$newpass) {

@@ -20,6 +20,10 @@ class sspmod_KB_Auth_Source_BrugerbaseAuth extends sspmod_core_Auth_UserPassBase
 	        if ($user == NULL) {
 				throw new SimpleSAML_Error_Error('WRONGUSERPASS');			
 			}
+
+		  	if ($this->brugerbase->blocked($username)) {
+				throw new SimpleSAML_Error_Exception('USERBLOCKED');
+			}
 			
 			if ($this->brugerbase->expire($username) < 0) {
 				throw new SimpleSAML_Error_Exception('USERPASSEXPIRED');
