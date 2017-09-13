@@ -74,6 +74,7 @@
 				throw new SimpleSAML_Error_Error('BRUGERBASENOTRESPONDING');
 			} elseif(preg_match('@^HTTP/1\.[01]\s200\s@', $respHeaders[0])) {
 				// 200 response - login OK
+				SimpleSAML_Logger::info('Brugerbase blocked response '.var_export($result,'TRUE'));
 				if (strpos($result,'true') !== false) {
 					return TRUE;
 				}
