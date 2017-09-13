@@ -6,5 +6,10 @@
   "newpassword1": {"en":"New password"},
   "newpassword2": {"en":"Repeat new password"},
   "renew_password": {"en": "OK"},
-  "renew_skip": {"en": "Skip"}
+  "renew_skip": {"en": "Skip"},
+  "error_PASSWORDTOSHORT": {"en": "The password must be at least 8 characters"},
+  "error_MUSTHAVELETTERSANDNUMBERS": {"en": "The password must consit of both letters and numbers"},
+  "error_PASSWORDNOMATCH": {"en": "New passwords are not identical"},
+  "error_INVALIDOLDPASS": {"en": "The old password is incorrect"},
+  "error_IDENTICALPASSWORD": {"en": "Your new password must not be the same as your old password"}
 }

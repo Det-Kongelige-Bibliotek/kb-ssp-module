@@ -30,5 +30,24 @@
   "renew_skip": {
     "da": "Senere",
     "en": "Skip"
+  },
+  "error_PASSWORDTOSHORT": {
+    "da": "Adgangskoden skal v\u00E6re p\u00E5 mindst 8 tegn",
+    "en": "The password must be at least 8 characters"
+  },
+  "error_MUSTHAVELETTERSANDNUMBERS": {
+    "da": "Adgangskoden skal best\u00E5 af b\u00E5de bogstaver og tal",
+    "en": "The password must consit of both letters and numbers"
+  },
+  "error_PASSWORDNOMATCH": {
+    "da": "De nye adgangskoder er ikke identiske",
+    "en": "New passwords are not identical"
+  },
+  "error_INVALIDOLDPASS": {
+    "da": "Den gamle adgangskode er forkert",
+    "en": "The old password is incorrect"
+  },
+  "error_IDENTICALPASSWORD": {
+    "en": "Your new password must not be the same as your old password"
   }
 }
