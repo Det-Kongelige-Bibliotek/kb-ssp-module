@@ -2,7 +2,8 @@
 	class sspmod_KB_BrugerbaseClient {
 		
 		private $baseURL;
-		
+
+        private $getUserPidURI = '/admin/rest/user';
 		private $loginURI = '/admin/rest/login';
 		private $expireURI = '/admin/rest/expire';
 		private $blockedURI = '/admin/rest/blocked';
@@ -13,10 +14,30 @@
 			
 			$this->baseURL = $baseURL;
 		}
+
+        public function getUser_PID($id) {
+            assert('is_string($id)');
+            $url = \SimpleSAML\Utils\HTTP::addURLParameters($this->baseURL . $this->getUserPidURI,
+                array('id' => $id));
+            list($result, $respHeaders) = \SimpleSAML\Utils\HTTP::fetch($url,
+                array('http'=>array('ignore_errors' => TRUE)), TRUE);
+            if(!isset($respHeaders)) {
+                // No response headers, this means the request failed in some way, so re-use old data
+                SimpleSAML_Logger::error('No response from brugerbase loginservice ');
+                throw new SimpleSAML_Error_Exception('BRUGERBASENOTRESPONDING');
+            } elseif(preg_match('@^HTTP/1\.[01]\s200\s@', $respHeaders[0])) {
+                return json_decode($result,TRUE);
+            } elseif(preg_match('@^HTTP/1\.[01]\s404\s@', $respHeaders[0])) {
+                return NULL;
+            } else {
+                SimpleSAML_Logger::error('Brugerbase login unexpected response code '.$respHeaders[0]);
+                throw new SimpleSAML_Error_Exception('BRUGERBASENOTRESPONDING');
+            }
+        }
 		
 		public function login($username,$password) {
-			assert(is_string($username));
-			assert(is_string($password));
+			assert('is_string($username)');
+			assert('is_string($password)');
 			$url = \SimpleSAML\Utils\HTTP::addURLParameters($this->baseURL . $this->loginURI,
 							array('id' => $username, 'password' => $password));
 			list($result, $respHeaders) = \SimpleSAML\Utils\HTTP::fetch($url,
@@ -90,8 +111,8 @@
 		}
 
 		public function resetpwd($userid,$newpass) {
-			assert(is_string($userid));
-			assert(is_string($newpass));
+			assert('is_string($userid)');
+			assert('is_string($newpass)');
 			$postdata = http_build_query(
 				array(
 					'id' => $userid,
@@ -122,7 +143,7 @@
 				throw new SimpleSAML_Error_Exception('BRUGERBASENOTRESPONDING');
 			}
 			// we should never get here
-			assert(false);
+			assert('FALSE');
 		}
 	}
 ?>
