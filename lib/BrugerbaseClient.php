@@ -4,6 +4,7 @@
 		private $baseURL;
 
         private $getUserPidURI = '/admin/rest/user';
+		private $getUserRemoteURI = '/admin/rest/remoteuser';
 		private $loginURI = '/admin/rest/login';
 		private $expireURI = '/admin/rest/expire';
 		private $blockedURI = '/admin/rest/blocked';
@@ -34,6 +35,30 @@
                 throw new SimpleSAML_Error_Exception('BRUGERBASENOTRESPONDING');
             }
         }
+
+		public function getUser_REMOTE($attributeId,$value,$verificationAttribute = NULL) {
+			assert('is_string($attributeId)');
+			assert('is_string($value)');
+			$url = \SimpleSAML\Utils\HTTP::addURLParameters($this->baseURL . $this->getUserRemoteURI,
+				array('remoteid' => $value, 'attributeid' => $attributeId ));
+			if ($verificationAttribute !== NULL) {
+				$url = \SimpleSAML\Utils\HTTP::addURLParameters($url, array('verificationattribute' => $verificationAttribute));
+			}
+			list($result, $respHeaders) = \SimpleSAML\Utils\HTTP::fetch($url,
+				array('http'=>array('ignore_errors' => TRUE)), TRUE);
+			if(!isset($respHeaders)) {
+				// No response headers, this means the request failed in some way, so re-use old data
+				SimpleSAML_Logger::error('No response from brugerbase loginservice ');
+				throw new SimpleSAML_Error_Exception('BRUGERBASENOTRESPONDING');
+			} elseif(preg_match('@^HTTP/1\.[01]\s200\s@', $respHeaders[0])) {
+				return json_decode($result,TRUE);
+			} elseif(preg_match('@^HTTP/1\.[01]\s404\s@', $respHeaders[0])) {
+				return NULL;
+			} else {
+				SimpleSAML_Logger::error('Brugerbase login unexpected response code '.$respHeaders[0]);
+				throw new SimpleSAML_Error_Exception('BRUGERBASENOTRESPONDING');
+			}
+		}
 		
 		public function login($username,$password) {
 			assert('is_string($username)');
