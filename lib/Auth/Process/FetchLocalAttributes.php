@@ -27,18 +27,31 @@ class sspmod_KB_Auth_Process_FetchLocalAttributes  extends SimpleSAML_Auth_Proce
         SimpleSAML_Logger::info('idps '.var_export($this->idps,TRUE));
         if (array_key_exists($idp,$this->idps )) {
             if ($this->idps[$idp]['method'] === 'PID') {
-                SimpleSAML_Logger::info('idp config '.var_export($this->idps[$idp],TRUE));
                 if (!array_key_exists($this->idps[$idp]['PIDattribute'],$state['Attributes']))
                     throw new SimpleSAML_Error_Exception('CONFIGERROR');
-                SimpleSAML_Logger::info('PID attribute '.$this->idps[$idp]['PIDattribute']);
                 $pid = $state['Attributes'][$this->idps[$idp]['PIDattribute']][0];
 
-                SimpleSAML_Logger::info("fetching brugerbase user ".$pid);
                 $user = $brugerbase->getUser_PID($pid);
-                SimpleSAML_Logger::info("got user ".var_export($user,TRUE));
                 if ($user != NULL) {
                     $this->setLocalAttributes($state['Attributes'], $user);
                 }
+            }
+            if ($this->idps[$idp]['method'] === 'ATTRIBUTE') {
+                $remoteAttribute = $this->idps[$idp]['remoteAttribute'];
+                $localAttribute = $this->idps[$idp]['localAttribute'];
+                $verificationAttribute = $this->idps[$idp]['verificationAttribute'];
+                assert('is_string($remoteAttribute)');
+                assert('is_string($localAttribute)');
+                assert('is_string($verificationAttribute)');
+                if (!array_key_exists($remoteAttribute,$state['Attributes']) ||
+                    count($state['Attributes'][$remoteAttribute]) < 1)
+                    throw new SimpleSAML_Error_Exception('NOREMOTEATTRIBUTE');
+                $value = $state['Attributes'][$remoteAttribute][0];
+                $users = $brugerbase->getUser_REMOTE($localAttribute, $value, $verificationAttribute);
+                SimpleSAML_Logger::info('local users '.var_export($users,TRUE));
+                if ($users == NULL) throw new SimpleSAML_ERROR_ERROR("NOLOCALUSERFOUND");
+                if (count($users) > 1) throw new SimpleSAML_ERROR_ERROR("TOMANYLOCALUSERS");
+                $this->setLocalAttributes($state['Attributes'], $users[0]);
             }
         }
     }
