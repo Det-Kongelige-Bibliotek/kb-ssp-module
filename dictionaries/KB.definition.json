@@ -11,5 +11,15 @@
   "error_MUSTHAVELETTERSANDNUMBERS": {"en": "The password must consit of both letters and numbers"},
   "error_PASSWORDNOMATCH": {"en": "New passwords are not identical"},
   "error_INVALIDOLDPASS": {"en": "The old password is incorrect"},
-  "error_IDENTICALPASSWORD": {"en": "Your new password must not be the same as your old password"}
+  "error_IDENTICALPASSWORD": {"en": "Your new password must not be the same as your old password"},
+  "loginerror_header_USERPASSEXPIRED" :{ "en": "Your password has expired" },
+  "loginerror_text_USERPASSEXPIRED" :{ "en": "To create a new password please go to <a href=\"RECOVERYURL?locale=en\" > RECOVERYURL?locale=en</a> and follow the instructions.<br> Please remember that your password expires after 6 months." },
+  "loginerror_header_USERBLOCKED" : { "en": "Your account is currently inactive" },
+  "loginerror_text_USERBLOCKED" : { "en": "From 9th December 2013, Royal Danish Library introduced a new policy regarding protection of personal data on our network. This means that you can no longer use the 4 digit PIN code as a password for REX and e-resources. <a href=\"RECOVERYURL?locale=en\">Click here</a>to update your password." },
+  "linkerror_header_NOLOCALUSER" : { "en": "No local user found" },
+  "linkerror_text_NOLOCALUSER" : { "en": "No local user found" },
+  "linkerror_header_NOREMOTEID" : { "en": "No remote ID" },
+  "linkerror_text_NOREMOTEID" : { "en": "No remote ID" },
+  "linkerror_header_TOMANYIDS" : { "en": "No remote ID" },
+  "linkerror_text_TOMANYIDS" : { "en": "No remote ID" }
 }

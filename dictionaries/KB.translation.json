@@ -48,6 +48,47 @@
     "en": "The old password is incorrect"
   },
   "error_IDENTICALPASSWORD": {
-    "en": "Your new password must not be the same as your old password"
+    "en": "Your new password must not be the same as your old password",
+    "da": "Den nye adgangskode må ikke være den samme som den gamle"
+  },
+  "loginerror_header_USERPASSEXPIRED" :{
+    "en": "Your password has expired",
+    "da": "Din adgangskode er udl\u00F8bet"
+  },
+  "loginerror_text_USERPASSEXPIRED" :{
+    "en": "To create a new password please go to <a href=\"RECOVERYURL?locale=en\" > RECOVERYURL?locale=en</a> and follow the instructions.<br> Please remember that your password expires after 6 months.",
+    "da": "For at v\u00E6lge en ny adgangskode skal du g\u00E5 til  <a href=\"RECOVERYURL\"> RECOVERYURL</a> og f\u00F8lge instruktionerne.<br> Husk, at din adgangskode udl\u00F8ber efter 6 m\u00E5neder."
+  },
+  "loginerror_header_USERBLOCKED" : {
+    "en": "Your account is currently inactive",
+    "da": "Din konto er inaktiv i \u00F8jeblikket"
+  },
+  "loginerror_text_USERBLOCKED" : {
+    "en": "From 9th December 2013, Royal Danish Library introduced a new policy regarding protection of personal data on our network. This means that you can no longer use the 4 digit PIN code as a password for REX and e-resources. <a href=\"RECOVERYURL?locale=en\">Click here</a>to update your password.",
+    "da": "Den 9. december 2013 indf\u00F8rte Det Kgl. Bibliotek en ny politik til beskyttelse af personlige data p\u00E5 nettet. Det betyder, at du ikke l\u00E6ngere kan anvende den 4 cifrede pinkode som adgangskode i REX og p\u00E5 E-ressourcer. <a href=\"RECOVERYURL?locale=da\" >Klik her</a> for at opdatere din adgangskode."
+  },
+  "linkerror_header_NOLOCALUSER" : {
+    "en": "No local user found",
+    "da": "Ingen lokal bruger"
+  },
+  "linkerror_text_NOLOCALUSER" : {
+    "en": "No local user found",
+    "da": "Ingen lokal bruger"
+  },
+  "linkerror_header_NOREMOTEID" : {
+    "en": "No Remote ID",
+    "da": "No Remote ID"
+  },
+  "linkerror_text_NOREMOTEID" : {
+    "en": "No Remote ID",
+    "da": "No Remote ID"
+  },
+  "linkerror_header_TOOMANYIDS" : {
+    "en": "To many RUC ids registred",
+    "da": "To many IDS"
+  },
+  "linkerror_text_TOMANYIDS" : {
+    "en": "To many RUC ids registred",
+    "da": "Dit RUC id er registreret på flere forskellige konti"
   }
 }

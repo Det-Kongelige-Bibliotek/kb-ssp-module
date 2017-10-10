@@ -22,11 +22,21 @@ class sspmod_KB_Auth_Source_BrugerbaseAuth extends sspmod_core_Auth_UserPassBase
 			}
 
 		  	if ($this->brugerbase->blocked($username)) {
-				throw new SimpleSAML_Error_Exception('USERBLOCKED');
+				\SimpleSAML\Utils\HTTP::redirectTrustedURL(
+					\SimpleSAML\Utils\HTTP::addURLParameters(
+						SimpleSAML_Module::getModuleURL('kb/loginerror.php'),
+						array('errorcode' => 'USERBLOCKED')
+					)
+				);
 			}
 			
 			if ($this->brugerbase->expire($username) < 0) {
-				throw new SimpleSAML_Error_Exception('USERPASSEXPIRED');
+				\SimpleSAML\Utils\HTTP::redirectTrustedURL(
+					\SimpleSAML\Utils\HTTP::addURLParameters(
+						SimpleSAML_Module::getModuleURL('kb/loginerror.php'),
+						array('errorcode' => 'USERPASSEXPIRED')
+					)
+				);
 			}
 			
 			$attributes = array();

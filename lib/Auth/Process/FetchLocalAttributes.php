@@ -22,10 +22,9 @@ class sspmod_KB_Auth_Process_FetchLocalAttributes  extends SimpleSAML_Auth_Proce
      */
     public function process(&$state) {
         $idp = $state['saml:sp:IdP'];
-        SimpleSAML_Logger::info('idp '.$idp);
         $brugerbase = new sspmod_KB_BrugerbaseClient($this->brugerbaseBaseUrl);
-        SimpleSAML_Logger::info('idps '.var_export($this->idps,TRUE));
         if (array_key_exists($idp,$this->idps )) {
+            $state['Attributes']['remoteInstitution'] = array($this->idps[$idp]['name']);
             if ($this->idps[$idp]['method'] === 'PID') {
                 if (!array_key_exists($this->idps[$idp]['PIDattribute'],$state['Attributes']))
                     throw new SimpleSAML_Error_Exception('CONFIGERROR');
@@ -44,12 +43,29 @@ class sspmod_KB_Auth_Process_FetchLocalAttributes  extends SimpleSAML_Auth_Proce
                 assert('is_string($localAttribute)');
                 assert('is_string($verificationAttribute)');
                 if (!array_key_exists($remoteAttribute,$state['Attributes']) ||
-                    count($state['Attributes'][$remoteAttribute]) < 1)
-                    throw new SimpleSAML_Error_Exception('NOREMOTEATTRIBUTE');
+                    count($state['Attributes'][$remoteAttribute]) < 1) {
+                    SimpleSAML_Logger::info('No remote ID logging out');
+                    $stateId  = SimpleSAML_Auth_State::saveState($state, 'KB:fetchlocal');
+                    \SimpleSAML\Utils\HTTP::redirectTrustedURL(
+                        \SimpleSAML\Utils\HTTP::addURLParameters(
+                            SimpleSAML_Module::getModuleURL('KB/linkerror.php'),
+                            array('errorcode' => 'NOREMOTEID', 'stateId' => $stateId)
+                        )
+                    );
+                }
                 $value = $state['Attributes'][$remoteAttribute][0];
                 $users = $brugerbase->getUser_REMOTE($localAttribute, $value, $verificationAttribute);
                 SimpleSAML_Logger::info('local users '.var_export($users,TRUE));
-                if ($users == NULL) throw new SimpleSAML_ERROR_ERROR("NOLOCALUSERFOUND");
+                if ($users == NULL) {
+                    $state['KB:remoteID'] = $value;
+                    $stateId  = SimpleSAML_Auth_State::saveState($state, 'KB:fetchlocal');
+                    \SimpleSAML\Utils\HTTP::redirectTrustedURL(
+                        \SimpleSAML\Utils\HTTP::addURLParameters(
+                            SimpleSAML_Module::getModuleURL('KB/linkerror.php'),
+                            array('errorcode' => 'NOLOCALUSER', 'stateId' => $stateId)
+                        )
+                    );
+                }
                 if (count($users) > 1) throw new SimpleSAML_ERROR_ERROR("TOMANYLOCALUSERS");
                 $this->setLocalAttributes($state['Attributes'], $users[0]);
             }
@@ -87,12 +103,12 @@ class sspmod_KB_Auth_Process_FetchLocalAttributes  extends SimpleSAML_Auth_Proce
             }
         }
         foreach($user['userAttributesesByUserId'] as $userattr) {
-            if ($userattr['libCode'] === 'prefLang') {
+            if ($userattr['attributeId'] === 'libCode') {
                 $this->addAttributeValue($attributes,'libCode',$userattr['val']);
             }
         }
         foreach($user['userAttributesesByUserId'] as $userattr) {
-            if ($userattr['barcode'] === 'prefLang') {
+            if ($userattr['attributeId'] === 'barcode') {
                 $this->addAttributeValue($attributes,'barcode',$userattr['val']);
             }
         }
