@@ -1,64 +1,85 @@
 <?php
 $this->data['header'] = $this->t('{KB:KB:renew_pass_header}', array('DAYS' => $this->data['daysToExpire']));
-$this->includeAtTemplateBase('includes/header.php');
+include(SimpleSAML_Module::getModuleDir('KB').'/templates/includes/header.php');
 ?>
+<section id="content">
+    <div class="container">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="row">
 
-<?php
-if ($this->data['errorcode'] !== null) {
-    ?>
-    <div style="border-left: 1px solid #e8e8e8; border-bottom: 1px solid #e8e8e8; background: #f5f5f5">
-        <img src="/<?php echo $this->data['baseurlpath']; ?>resources/icons/experience/gtk-dialog-error.48x48.png"
-             class="float-l erroricon" style="margin: 15px" alt=""/>
+                <div class="well well-lg info ">
 
-        <h2><?php echo $this->t('{KB:KB:renew_error_header}'); ?></h2>
-        
-        <p><?php
-            echo htmlspecialchars($this->t(
-                '{KB:KB:error_'.$this->data['errorcode'].'}'
-            )); ?></p>
+                    <div>
+                        <div>
+                                    <span class="tab active">Log Ind
+                                    </span>
+                        </div>
+
+                        <p class="alert alert-danger">
+                            <?php echo $this->t('{KB:KB:renew_pass_header}',array('DAYS' => $this->data['daysToExpire'])); ?>                        </p>
+                        <p style="font-weight:lighter;">
+                            <?php echo $this->t('{KB:KB:renew_pass_text}'); ?>
+                        </p>
+
+                        <form id="fm2" class="form-horizontal" action="?" method="post" name="f">
+                            <input id="StateId" type="hidden" name="StateId" value="<?php echo $_REQUEST['StateId']?>"/>
+                            <div class="form-group">
+                                <label for="oldPassword" class="control-label"><?php echo $this->t('{KB:KB:oldpassword}'); ?></label>
+                                <div>
+                                    <input id="oldpassword" class="form-control" type="password" tabindex="1" name="oldpassword"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="newPassword" class="control-label"><?php echo $this->t('{KB:KB:newpassword1}'); ?></label>
+                                <div>
+                                    <input id="newpassword1" class="form-control" type="password" tabindex="2" name="newpassword1"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="newPasswordConfirm" class="control-label"><?php echo $this->t('{KB:KB:newpassword2}'); ?></label>
+                                <div>
+                                    <input id="newpassword2" class="form-control" type="password" tabindex="3" name="newpassword2"/>
+                                </div>
+                            </div>
+                            <div class="form-group text-center">
+                                    <span class="">
+                    <?php
+                        if ($this->data['errorcode'] !== null) {
+                    ?>
+                            <div class="alert alert-danger">
+                            <?php
+                            echo htmlspecialchars($this->t(
+                                '{KB:KB:error_'.$this->data['errorcode'].'}'
+                            )); ?>
+                                </div>
+                    <?php
+                        }
+                    ?>
+                                    </span>
+                                    <span class="">
+                                        <input type="submit" class="btn btn-success" tabindex="4"
+                                            value="<?php echo $this->t('{KB:KB:renew_password}'); ?>" name="OK" >
+                                        </input>
+                                    </span>
+                                    <span class="">
+                                        <input type="submit" class="btn btn-danger" tabindex="4"
+                                            value="<?php echo $this->t('{KB:KB:renew_skip}'); ?>" name="SKIP">
+                                        </input>
+                                    </span>
+                            </div>
+                        </form>
+                        <hr/>
+                        <p class="text-center">
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
     </div>
+    </div>
+</section>
 <?php
-}
-
-?>
-    <h2 style="break: both"><?php echo $this->t('{KB:KB:renew_pass_header}',array('DAYS' => $this->data['daysToExpire'])); ?></h2>
-
-    <p class="renewtext"><?php echo $this->t('{KB:KB:renew_pass_text}'); ?></p>
-
-    <form action="?" method="post" name="f">
-        <table>
-            <tr>
-                <td><label for="oldpassword"><?php echo $this->t('{KB:KB:oldpassword}'); ?></label></td>
-                <td>
-                    <input id="oldpassword" type="password" tabindex="1" name="oldpassword"/>
-                </td>
-            </tr>
-            <tr>
-                <td><label for="newpassword1"><?php echo $this->t('{KB:KB:newpassword1}'); ?></label></td>
-                <td>
-                    <input id="newpassword1" type="password" tabindex="2" name="newpassword1"/>
-                </td>
-            </tr>
-            <tr>
-                <td><label for="newpassword2"><?php echo $this->t('{KB:KB:newpassword2}'); ?></label></td>
-                <td>
-                    <input id="newpassword2" type="password" tabindex="3" name="newpassword2"/>
-                </td>
-            </tr>
-            <input id="StateId" type="hidden" name="StateId" value="<?php echo $_REQUEST['StateId']?>"/>
-            <tr id="submit"><td>
-                    <input type="submit" class="btn" tabindex="4"
-                        value="<?php echo $this->t('{KB:KB:renew_password}'); ?>" name="OK" >
-                    </input>
-                    <input type="submit" class="btn" tabindex="4"
-                        value="<?php echo $this->t('{KB:KB:renew_skip}'); ?>" name="SKIP">
-                    </input>
-                </td>
-            </tr>
-        </table>
-        <?php
-        ?>
-    </form>
-<?php
-$this->includeAtTemplateBase('includes/footer.php');
+include(SimpleSAML_Module::getModuleDir('KB').'/templates/includes/footer.php');
 ?>

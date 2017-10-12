@@ -1,5 +1,5 @@
 <?php
-$this->includeAtTemplateBase('includes/header.php');
+include(SimpleSAML_Module::getModuleDir('KB').'/templates/includes/header.php');
 $errcode = $this->data['errorcode'];
 $logoutURL = $this->data['logoutUrl'];
 ?>
@@ -8,5 +8,5 @@ $logoutURL = $this->data['logoutUrl'];
     </div>
     <a href="<?php echo $logoutURL ?>">Logout og brug et andet id</a><br>Registrer dit RUC id';
 <?php
-$this->includeAtTemplateBase('includes/footer.php');
+include(SimpleSAML_Module::getModuleDir('KB').'/templates/includes/footer.php');
 ?>

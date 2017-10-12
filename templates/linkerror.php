@@ -1,5 +1,5 @@
 <?php
-$this->includeAtTemplateBase('includes/header.php');
+include(SimpleSAML_Module::getModuleDir('KB').'/templates/includes/header.php');
 $errcode = $this->data['errorcode'];
 $logoutURL = $this->data['logoutUrl'];
 ?>
@@ -7,5 +7,5 @@ $logoutURL = $this->data['logoutUrl'];
     <p><?php echo $this->t('{KB:KB:linkerror_text_'.$errcode.'}') ?></p>
 </div>
 <?php
-$this->includeAtTemplateBase('includes/footer.php');
+include(SimpleSAML_Module::getModuleDir('KB').'/templates/includes/footer.php');
 ?>
