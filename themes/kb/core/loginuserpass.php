@@ -26,9 +26,6 @@ include(SimpleSAML_Module::getModuleDir('KB').'/templates/includes/header.php');
                     </div>
                     <div >
                         <form action="?" class="form-horizontal" method="post" name="f">
-                            <input type="hidden" name="lt" value="LT-1067434-rcRrdA0NaH1s4kxpBzyb1edHBlQbed" />
-                            <input type="hidden" name="execution" value="e2s1" />
-                            <input type="hidden" name="_eventId" value="submit" />
                             <div class="form-group">
                                 <div >
                                     <label for="username" class="control-label"><?php echo $this->t('{login:username}'); ?></label>
