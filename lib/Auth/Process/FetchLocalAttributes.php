@@ -54,6 +54,9 @@ class sspmod_KB_Auth_Process_FetchLocalAttributes  extends SimpleSAML_Auth_Proce
                     );
                 }
                 $value = $state['Attributes'][$remoteAttribute][0];
+                if ($this->idps[$idp]['removeScope']) {
+                    $value = strstr($value,'@',TRUE);
+                }
                 $users = $brugerbase->getUser_REMOTE($localAttribute, $value, $verificationAttribute);
                 SimpleSAML_Logger::info('local users '.var_export($users,TRUE));
                 if ($users == NULL) {
