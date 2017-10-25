@@ -2,9 +2,7 @@
 class sspmod_KB_FetchError extends SimpleSAML_Error_Exception {
     private $errcode;
     public function __construct($msg, Exception $cause = NULL) {
-        assert('is_string($status)');
-        assert('is_null($subStatus) || is_string($subStatus)');
-        assert('is_null($statusMessage) || is_string($statusMessage)');
+        assert('is_string($msg)');
         $this->errcode = $msg;
         parent::__construct($msg, -1, $cause);
     }
