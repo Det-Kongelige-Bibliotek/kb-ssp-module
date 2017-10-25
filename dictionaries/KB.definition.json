@@ -21,5 +21,7 @@
   "linkerror_header_NOREMOTEID" : { "en": "No remote ID" },
   "linkerror_text_NOREMOTEID" : { "en": "No remote ID" },
   "linkerror_header_TOMANYIDS" : { "en": "No remote ID" },
-  "linkerror_text_TOMANYIDS" : { "en": "No remote ID" }
+  "linkerror_text_TOMANYIDS" : { "en": "No remote ID" },
+  "fetcherror_header_REMOTEATTRNOVALUE" : { "en": "Unable to find local user" },
+  "fetcherror_text_REMOTEATTRNOVALUE" : { "en": "remote institution did not send ID" }
 }

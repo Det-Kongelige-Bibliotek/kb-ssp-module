@@ -90,5 +90,13 @@
   "linkerror_text_TOMANYIDS" : {
     "en": "To many RUC ids registred",
     "da": "Dit RUC id er registreret på flere forskellige konti"
+  },
+  "fetcherror_header_REMOTEATTRNOVALUE" : {
+    "en": "Unable to find local user",
+    "da": "Kunne ikke finde lokal bruger"
+  },
+  "fetcherror_text_REMOTEATTRNOVALUE" : {
+    "en": "remote institution did not send ID",
+    "da": "Der blev ikke sendt noget ID fra RUC"
   }
 }
