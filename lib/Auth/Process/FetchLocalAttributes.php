@@ -69,7 +69,7 @@ class sspmod_KB_Auth_Process_FetchLocalAttributes  extends SimpleSAML_Auth_Proce
                         )
                     );
                 }
-                if (count($users) > 1) throw new SimpleSAML_ERROR_ERROR("TOMANYLOCALUSERS");
+                if (count($users) > 1) throw new sspmod_KB_FetchError("TOMANYLOCALUSERS");
                 $this->setLocalAttributes($state['Attributes'], $users[0]);
             }
         }
