@@ -14,7 +14,7 @@ class sspmod_KB_FetchError extends SimpleSAML_Error_Exception {
     public function show() {
         $config = SimpleSAML_Configuration::getInstance();
         $t = new SimpleSAML_XHTML_Template($config, 'KB:fetcherror.php');
-        $t->data['errcode'] = $this->errcode;
+        $t->data['errcode'] = "";
         $t->show();
     }
 
