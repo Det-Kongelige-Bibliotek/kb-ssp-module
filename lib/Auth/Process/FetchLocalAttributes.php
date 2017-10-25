@@ -42,16 +42,11 @@ class sspmod_KB_Auth_Process_FetchLocalAttributes  extends SimpleSAML_Auth_Proce
                 assert('is_string($remoteAttribute)');
                 assert('is_string($localAttribute)');
                 assert('is_string($verificationAttribute)');
+                SimpleSAML_Logger::debug("remote attribute is "+$remoteAttribute);
                 if (!array_key_exists($remoteAttribute,$state['Attributes']) ||
                     count($state['Attributes'][$remoteAttribute]) < 1) {
-                    SimpleSAML_Logger::info('No remote ID logging out');
-                    $stateId  = SimpleSAML_Auth_State::saveState($state, 'KB:fetchlocal');
-                    \SimpleSAML\Utils\HTTP::redirectTrustedURL(
-                        \SimpleSAML\Utils\HTTP::addURLParameters(
-                            SimpleSAML_Module::getModuleURL('KB/linkerror.php'),
-                            array('errorcode' => 'NOREMOTEID', 'stateId' => $stateId)
-                        )
-                    );
+                    SimpleSAML_Logger::error("Remote attribute "+$remoteAttribute+" has no value");
+                    throw new sspmod_KB_FetchError("REMOTEATTRNOVALUE");
                 }
                 $value = $state['Attributes'][$remoteAttribute][0];
                 if ($this->idps[$idp]['removeScope']) {
