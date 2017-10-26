@@ -48,24 +48,21 @@ foreach ($this->data['idplist'] as $idpentry) {
                             ) {
                                 $idpentry = $this->data['idplist'][$this->data['preferredidp']];
                                 echo '<div class="preferredidp">';
-                                echo '	<img src="/' . $this->data['baseurlpath'] .
-                                    'resources/icons/experience/gtk-about.64x64.png" class="float-r" alt="' .
-                                    $this->t('icon_prefered_idp') . '" />';
 
                                 if (array_key_exists('icon', $idpentry) && $idpentry['icon'] !== null) {
                                     $iconUrl = \SimpleSAML\Utils\HTTP::resolveURL($idpentry['icon']);
                                     echo '<img class="float-l" style="margin: 1em; padding: 3px; border: 1px solid #999" src="' .
                                         htmlspecialchars($iconUrl) . '" />';
                                 }
-                                echo "\n" . '	<h3 style="margin-top: 8px">' .
-                                    htmlspecialchars($this->t('idpname_' . $idpentry['entityid'])) . '</h3>';
-
+                                echo '<button type="submit" class="btn btn-success" name="idp_' . htmlspecialchars($idpentry['entityid']) . '">';
+                                echo '<h3 style="margin-top: 8px">' . htmlspecialchars($this->t('idpname_' . $idpentry['entityid'])) . '</h3>';
                                 if (!empty($idpentry['description'])) {
-                                    echo '	<p>' . htmlspecialchars($this->t('idpdesc_' . $idpentry['entityid'])) . '<br />';
+                                    echo '	<p>' . htmlspecialchars($this->t('idpdesc_' . $idpentry['entityid'])) . '</p>';
                                 }
-                                echo('<button id="preferredidp" type="submit" class="btn btn-success" name="idp_' .
-                                    htmlspecialchars($idpentry['entityid']) . '">' .
-                                    $this->t('select') . '</button></p>');
+                                echo '</button>';
+                                echo '	<img src="/' . $this->data['baseurlpath'] .
+                                    'resources/icons/experience/gtk-about.64x64.png" class="float-r" alt="' .
+                                    $this->t('icon_prefered_idp') . '" />';
                                 echo '</div>';
                             }
 
@@ -76,14 +73,13 @@ foreach ($this->data['idplist'] as $idpentry) {
                                         echo '<img class="float-l" style="clear: both; margin: 1em; padding: 3px; border: 1px solid #999"' .
                                             ' src="' . htmlspecialchars($iconUrl) . '" />';
                                     }
-                                    echo "\n" . '	<h3 style="margin-top: 8px">' . htmlspecialchars($this->t('idpname_' . $idpentry['entityid']));
-                                    echo '</h3>';
 
+                                    echo '<button type="submit" class="btn btn-success" name="idp_' . htmlspecialchars($idpentry['entityid']) . '">';
+                                    echo '<h3 style="margin-top: 8px">' . htmlspecialchars($this->t('idpname_' . $idpentry['entityid'])) . '</h3>';
                                     if (!empty($idpentry['description'])) {
-                                        echo '	<p>' . htmlspecialchars($this->t('idpdesc_' . $idpentry['entityid'])) . '<br />';
+                                        echo '	<p>' . htmlspecialchars($this->t('idpdesc_' . $idpentry['entityid'])) . '</p>';
                                     }
-                                    echo '<button type="submit" class="btn btn-success" name="idp_' . htmlspecialchars($idpentry['entityid']) . '">' .
-                                        $this->t('select') . '</button></p>';
+                                    echo '</button>';
                                 }
                             }
                             ?>
