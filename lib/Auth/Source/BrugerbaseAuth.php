@@ -24,7 +24,7 @@ class sspmod_KB_Auth_Source_BrugerbaseAuth extends sspmod_core_Auth_UserPassBase
 		  	if ($this->brugerbase->blocked($username)) {
 				\SimpleSAML\Utils\HTTP::redirectTrustedURL(
 					\SimpleSAML\Utils\HTTP::addURLParameters(
-						SimpleSAML_Module::getModuleURL('kb/loginerror.php'),
+						SimpleSAML_Module::getModuleURL('KB/loginerror.php'),
 						array('errorcode' => 'USERBLOCKED')
 					)
 				);
@@ -33,7 +33,7 @@ class sspmod_KB_Auth_Source_BrugerbaseAuth extends sspmod_core_Auth_UserPassBase
 			if ($this->brugerbase->expire($username) < 0) {
 				\SimpleSAML\Utils\HTTP::redirectTrustedURL(
 					\SimpleSAML\Utils\HTTP::addURLParameters(
-						SimpleSAML_Module::getModuleURL('kb/loginerror.php'),
+						SimpleSAML_Module::getModuleURL('KB/loginerror.php'),
 						array('errorcode' => 'USERPASSEXPIRED')
 					)
 				);
