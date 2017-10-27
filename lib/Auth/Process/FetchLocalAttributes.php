@@ -26,8 +26,10 @@ class sspmod_KB_Auth_Process_FetchLocalAttributes  extends SimpleSAML_Auth_Proce
         if (array_key_exists($idp,$this->idps )) {
             $state['Attributes']['remoteInstitution'] = array($this->idps[$idp]['name']);
             if ($this->idps[$idp]['method'] === 'PID') {
-                if (!array_key_exists($this->idps[$idp]['PIDattribute'],$state['Attributes']))
-                    throw new SimpleSAML_Error_Exception('CONFIGERROR');
+                if (!array_key_exists($this->idps[$idp]['PIDattribute'],$state['Attributes'])) {
+                    SimpleSAML_Logger::error("PID attribute does not exist ".var_dump($state['Attributes'],true));
+                    throw new SimpleSAML_Error_Error('CONFIGERROR');
+                }
                 $pid = $state['Attributes'][$this->idps[$idp]['PIDattribute']][0];
 
                 $user = $brugerbase->getUser_PID($pid);
@@ -46,7 +48,7 @@ class sspmod_KB_Auth_Process_FetchLocalAttributes  extends SimpleSAML_Auth_Proce
                 if (!array_key_exists($remoteAttribute,$state['Attributes']) ||
                     count($state['Attributes'][$remoteAttribute]) < 1) {
                     SimpleSAML_Logger::error("Remote attribute "+$remoteAttribute+" has no value");
-                    throw new sspmod_KB_FetchError("REMOTEATTRNOVALUE");
+                    throw new SimpleSAML_Error_Error("REMOTEATTRNOVALUE");
                 }
                 $value = $state['Attributes'][$remoteAttribute][0];
                 if ($this->idps[$idp]['removeScope']) {
@@ -64,9 +66,15 @@ class sspmod_KB_Auth_Process_FetchLocalAttributes  extends SimpleSAML_Auth_Proce
                         )
                     );
                 }
-                if (count($users) > 1) throw new sspmod_KB_FetchError("TOMANYLOCALUSERS");
+                if (count($users) > 1) {
+                    SimpleSAML_Logger::error("To many users found for "+$value);   
+                    throw new SimpleSAML_Error_Error("TOMANYLOCALUSERS");
+                }
                 $this->setLocalAttributes($state['Attributes'], $users[0]);
             }
+        } else {
+            SimpleSAML_Logger::error("Fetch attributes not configured for "+$idp);
+            throw new SimpleSAML_Error_Error("CONFIGERROR");
         }
     }
 

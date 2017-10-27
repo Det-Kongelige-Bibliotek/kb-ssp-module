@@ -75,6 +75,30 @@
     "en": "No local user found",
     "da": "Ingen lokal bruger"
   },
+  "error_header_CONFIGERROR" :
+    {"en": "OOPS..",
+     "da": "UPS.."
+    },
+  "error_header_TOOMANYUSERS" : {
+    "en": "Multible Accounts",
+    "da": "Flere konti"
+  },
+  "error_text_TOOMANYUSERS" : {
+    "en": "Your ID is connected to multiple accounts",
+    "da": "DIT RUCID er tilknyttet flere konti"
+  },
+  "error_header_REMOTEATTRNOVALUE" : {
+    "en": "No remote ID",
+    "da": "Ingen ID"
+  },
+  "error_text_REMOTEATTRNOVALUE" : {
+    "en": "Your institution did not send any ID",
+    "da": "Din institution sendte ikke noget ID"
+  },
+  "error_text_CONFIGERROR" : {
+    "en": "Something went wrong",
+    "da": "Der gik noget galt"
+  },
   "linkerror_header_NOREMOTEID" : {
     "en": "No Remote ID",
     "da": "No Remote ID"
