@@ -1,7 +1,7 @@
 <?php
 
 if (!array_key_exists('header', $this->data)) {
-    $this->data['header'] = 'selectidp';
+    $this->data['header'] = '{KB:KB:selectidp}';
 }
 $this->data['header'] = $this->t($this->data['header']);
 $this->data['autofocus'] = 'preferredidp';

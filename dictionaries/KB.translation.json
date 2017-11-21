@@ -126,5 +126,10 @@
   "remember" : {
     "en": "Remember my choice",
     "da": "Husk mit valg"
+  },
+  "selectidp" : {
+    "en": "Select your institution",
+    "da": "Vælg institution"
   }
+
 }
