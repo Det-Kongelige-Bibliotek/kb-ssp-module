@@ -97,3 +97,30 @@ hr{
 .hospital img{
     width: 70px;
 }
+
+small{
+    font-size: 12px;
+    display: block;
+    color: #999999;
+}
+
+.btn-wizard {
+    color: #333333;
+    background-color: #ffffff;
+    border-color: #cccccc;
+    display: block;
+    width: 100%;
+    white-space: normal;
+    margin-bottom: 10px;
+    min-height: 140px;
+    padding: 5px;
+}
+
+.idp-logo {
+    vertical-align: middle;
+    text-align: center;
+    width: 50px;
+    display: block;
+    margin: auto;
+    padding-bottom: 5px;
+}
