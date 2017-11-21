@@ -38,8 +38,8 @@ foreach ($this->data['idplist'] as $idpentry) {
                             <p><?php
                                 echo $this->t('selectidp_full');
                                 if ($this->data['rememberenabled']) {
-                                    echo '<br /><input type="checkbox" name="remember" value="1" title="' . $this->t('remember') . '" />' .
-                                        $this->t('remember');
+                                    echo '<br /><input type="checkbox" name="remember" value="1" title="' . $this->t('{KB:remember}') . '" />' .
+                                        $this->t('{KB:KB:remember}');
                                 }
                                 ?></p>
                             <?php

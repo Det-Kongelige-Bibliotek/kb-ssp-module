@@ -122,5 +122,9 @@
   "fetcherror_text_REMOTEATTRNOVALUE" : {
     "en": "remote institution did not send ID",
     "da": "Der blev ikke sendt noget ID fra RUC"
+  },
+  "remember" : {
+    "en": "Remember my choice",
+    "da": "Husk mit valg"
   }
 }
