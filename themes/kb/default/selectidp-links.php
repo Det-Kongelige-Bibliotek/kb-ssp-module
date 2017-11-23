@@ -36,7 +36,7 @@ foreach ($this->data['idplist'] as $idpentry) {
                             <input type="hidden" name="returnIDParam"
                                    value="<?php echo htmlspecialchars($this->data['returnIDParam']); ?>"/>
                             <p><?php
-                                echo $this->t('selectidp_full');
+                                echo $this->t('{KB:KB:selectidp_full}');
                                 if ($this->data['rememberenabled']) {
                                     echo '<br /><input type="checkbox" name="remember" value="1" title="' . $this->t('{KB:remember}') . '" />' .
                                         $this->t('{KB:KB:remember}');

@@ -31,5 +31,6 @@
   "fetcherror_header_REMOTEATTRNOVALUE" : { "en": "Unable to find local user" },
   "fetcherror_text_REMOTEATTRNOVALUE" : { "en": "remote institution did not send ID" },
   "remember" : { "en": "Remember my choice"},
-  "selectidp" : {"en": "Select your institution"}
+  "selectidp" : {"en": "Select your institution"},
+  "selectidp_full" : {"en": "Please select how to login"}
 }

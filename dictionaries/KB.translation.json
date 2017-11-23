@@ -130,6 +130,11 @@
   "selectidp" : {
     "en": "Select your institution",
     "da": "Vælg institution"
+  },
+  "selectidp_full" : {
+    "da": "Vælg hvordan du vil logge ind",
+    "en": "Please select how to login"
   }
+
 
 }
