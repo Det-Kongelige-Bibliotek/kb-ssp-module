@@ -32,5 +32,7 @@
   "fetcherror_text_REMOTEATTRNOVALUE" : { "en": "remote institution did not send ID" },
   "remember" : { "en": "Remember my choice"},
   "selectidp" : {"en": "Select your institution"},
-  "selectidp_full" : {"en": "Please select how to login"}
+  "selectidp_full" : {"en": "Please select how to login"},
+  "nolink_header" : {"en": "RUCid not found"},
+  "nolink_text" : {"en": "<p></p><p></p>"}
 }

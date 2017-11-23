@@ -1,15 +1,20 @@
 <?php
 include(SimpleSAML_Module::getModuleDir('KB').'/templates/includes/header.php');
+$globalConfig = SimpleSAML_Configuration::getInstance();
 $errcode = $this->data['errorcode'];
 $logoutURL = $this->data['logoutUrl'];
 ?>
-    <h2>Vi kunne ikke finde dit RUC id</h2>
-    <div><p>
-        Hvis du ikke er registreret som låner ved Det Kgl. Bibliotek kan du <a href="https://user-stage.kb.dk/user/create"> Registrere dig som bruger her </a> Husk at vælge studerede ved RUC og angive dit RUC-id
-            </p><p>
-        Hvis du allerede er registrerest som låner kan du tilføje dit RUC id på <a href="https://user-stage.kb.dk/user/edit">https://user-stage.kb.dk/user/edit</a>
-        </p>
-    </div>
+    <section id="content">
+        <div class="container">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="well well-lg info ">
+                    <div id="msg" class="alert alert-success">
+                        <h2><?php echo $this->t('{KB:KB:nolink_header}') ?></h2>
+                        <div><?php echo $this->t('{KB:KB:nolink_text}', array('CREATEURL' => $globalConfig->getValue('brugerbase.baseurl').'/create', 'EDITURL' => $globalConfig->getValue('brugerbase.baseurl').'/edit')) ?></div>
+                    </div>
+                </div>
+            </div>
+    </section>
 <?php
 include(SimpleSAML_Module::getModuleDir('KB').'/templates/includes/footer.php');
 ?>
