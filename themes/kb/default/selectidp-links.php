@@ -46,12 +46,12 @@ foreach ($this->data['idplist'] as $idpentry) {
 
                             echo '<div class="row">';
                             foreach ($this->data['idplist'] as $idpentry) {
-                                    echo '<div class="col-sm-12"><button type="submit" class="btn  btn-wizard" name="idp_' . $idpentry['entityid'] . '">';
+                                    echo '<div class="col-sm-12"><button type="submit" class="btn  btn-wizard" name="idp_' . htmlspecialchars($idpentry['entityid']) . '">';
                                     if (array_key_exists('icon', $idpentry) && $idpentry['icon'] !== null) {
                                         $iconUrl = SimpleSAML_Module::getModuleURL($idpentry['icon']);
                                         echo '<img class="idp-logo" src="' . $iconUrl . '">';
                                     }
-                                    echo '<strong>'.htmlspecialchars($this->t('idpname_' . $idpentry['entityid'])).'</strong>';
+                                    echo '<strong>'.$this->t('idpname_' . $idpentry['entityid']).'</strong>';
                                     if (!empty($idpentry['description'])) {
                                         echo '	<small>' . htmlspecialchars($this->t('idpdesc_' . $idpentry['entityid'])) . '</small>';
                                     }
