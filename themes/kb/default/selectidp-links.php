@@ -53,7 +53,7 @@ foreach ($this->data['idplist'] as $idpentry) {
                                     }
                                     echo '<strong>'.htmlspecialchars($this->t('idpname_' . $idpentry['entityid'])).'</strong>';
                                     if (!empty($idpentry['description'])) {
-                                        echo '	<small>' . htmlspecialchars($this->t('idpdesc_' . $idpentry['entityid'])) . '</small>';
+                                        echo '	<small>' . $this->t('idpdesc_' . $idpentry['entityid']) . '</small>';
                                     }
                                     echo '</button></div>';
                                 
