@@ -136,11 +136,11 @@
     "en": "Please select how to login"
   },
   "nolink_header" : {
-    "en": "RUCid not found",
-    "da": "Vi kunne ikke finde dit RUCid"
+    "en": "RUC user-id not found",
+    "da": "Vi kunne ikke finde dit RUC brugernavn"
   },
   "nolink_text" : {
-    "en": "<p>If you have not registrered as a loaner at The Royal Library you can <a href=\"CREATEURL\"> use the online registration form </a> Choose student ar RUC</p><p>If you are allready registred as a loaner you can add you RUCid here <a href=\"EDITURL\">EDITURL</a></p>",
-    "da": "<p>Hvis du ikke er registreret som låner ved Det Kgl. Bibliotek kan du <a href=\"CREATEURL\"> Registrere dig som bruger her </a> Husk at vælge studerede ved RUC og angive dit RUC-id</p><p>Hvis du allerede er registreret som låner kan du tilføje dit RUC id på <a href=\"EDITURL\">EDITURL</a></p>"
+    "en": "<p>If you have not registrered as a loaner at Royal Danish Library you can <a href=\"CREATEURL\"> use the online registration form </a> Choose student ar RUC</p><p>If you are allready registred as a loaner you can add you RUC user-id here <a href=\"EDITURL\">EDITURL</a></p>",
+    "da": "<p>Hvis du ikke er registreret som låner ved Det Kgl. Bibliotek kan du <a href=\"CREATEURL\"> Registrere dig som bruger her </a> Husk at vælge studerede eller ansat ved RUC og angive dit RUC brugernavn</p><p>Hvis du allerede er registreret som låner kan du tilføje dit RUC brugernavn på <a href=\"EDITURL\">EDITURL</a></p>"
   }
 }
