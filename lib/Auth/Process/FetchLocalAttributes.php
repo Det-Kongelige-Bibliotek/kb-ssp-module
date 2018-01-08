@@ -67,10 +67,17 @@ class sspmod_KB_Auth_Process_FetchLocalAttributes  extends SimpleSAML_Auth_Proce
                     );
                 }
                 if (count($users) > 1) {
-                    SimpleSAML_Logger::error("To many users found for "+$value);   
+                    SimpleSAML_Logger::error("To many users found for "+$value);
                     throw new SimpleSAML_Error_Error("TOMANYLOCALUSERS");
                 }
                 $this->setLocalAttributes($state['Attributes'], $users[0]);
+            }
+            if ($this->idps[$idp]['method'] === 'REGIONH') {
+                $state['Attributes']['loginID'] = Array('CUH-X'.$state['saml:sp:NameID']['Value']);
+                $kbadgang = $state['Attributes']['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'][0];
+                if ($kbadgang === 'JA') {
+                    $state['Attributes']['oid'] = Array('1.3.6.1.4.1.11356.2.3.17');
+                }
             }
         } else {
             SimpleSAML_Logger::error("Fetch attributes not configured for "+$idp);
