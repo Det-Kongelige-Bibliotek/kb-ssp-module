@@ -1,7 +1,7 @@
 <?php
 include(SimpleSAML_Module::getModuleDir('KB').'/templates/includes/header.php');
 $globalConfig = SimpleSAML_Configuration::getInstance();
-$errcode = $this->data['errorcode'];
+//$errcode = $this->data['errorcode'];
 //$logoutURL = $this->data['logoutUrl'];
 ?>
     <section id="content">
