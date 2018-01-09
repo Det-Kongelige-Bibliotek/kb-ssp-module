@@ -36,7 +36,7 @@ include(SimpleSAML_Module::getModuleDir('KB').'/templates/includes/header.php');
                             </div>
                             <div class="form-group">
                                 <div >
-                                    <label for="password" class="control-label">Adgangskode</label>
+                                    <label for="password" class="control-label"><?php echo $this->t('{login:password}'); ?></label>
                                 </div>
                                 <div >
                                     <input id="password" name="password" class="form-control" tabindex="1" placeholde="Adgangskode" required="required" type="password" <?php echo $this->t('{login:password}'); ?>/>
@@ -78,7 +78,7 @@ include(SimpleSAML_Module::getModuleDir('KB').'/templates/includes/header.php');
                             <hr/>
                             <div class="form-group">
                                 <div class="text-center">
-                                    <a href='<?php echo $globalConfig->getValue("brugerbase.baseurl") ?>/user/recovery?locale=da_DK' style="color:#FFF;">Har du glemt din adgangskode?</a>
+                                    <a href='<?php echo $globalConfig->getValue("brugerbase.baseurl") ?>/recovery?locale=da_DK' style="color:#FFF;">Har du glemt din adgangskode?</a>
                                 </div>
                             </div>
                         </form>

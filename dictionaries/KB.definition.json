@@ -8,7 +8,7 @@
   "renew_password": {"en": "OK"},
   "renew_skip": {"en": "Skip"},
   "error_PASSWORDTOSHORT": {"en": "The password must be at least 8 characters"},
-  "error_MUSTHAVELETTERSANDNUMBERS": {"en": "The password must consit of both letters and numbers"},
+  "error_MUSTHAVELETTERSANDNUMBERS": {"en": "The password must consist of both letters and numbers"},
   "error_PASSWORDNOMATCH": {"en": "New passwords are not identical"},
   "error_INVALIDOLDPASS": {"en": "The old password is incorrect"},
   "error_IDENTICALPASSWORD": {"en": "Your new password must not be the same as your old password"},
@@ -33,6 +33,7 @@
   "remember" : { "en": "Remember my choice"},
   "selectidp" : {"en": "Select your institution"},
   "selectidp_full" : {"en": "Please select how to login"},
-  "nolink_header" : {"en": "RUCid not found"},
-  "nolink_text" : {"en": "<p></p><p></p>"}
+  "nolink_header" : {"en": "RUC user-id not found" },
+  "nolink_text" : {"en": "<p>If you have not registrered as a loaner at Royal Danish Library you can <a href=\"CREATEURL\"> use the online registration form </a> Choose student ar RUC</p><p>If you are allready registred as a loaner you can add you RUC user-id here <a href=\"EDITURL\">EDITURL</a></p>"
+  }
 }

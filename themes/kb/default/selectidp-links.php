@@ -1,5 +1,4 @@
 <?php
-
 if (!array_key_exists('header', $this->data)) {
     $this->data['header'] = '{KB:KB:selectidp}';
 }
