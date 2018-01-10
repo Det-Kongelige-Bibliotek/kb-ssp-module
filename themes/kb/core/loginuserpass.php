@@ -18,7 +18,7 @@ include(SimpleSAML_Module::getModuleDir('KB').'/templates/includes/header.php');
                         <span class="tab active">
                             Log ind
                         </span>
-                        <a href='<?php echo $globalConfig->getValue("brugerbase.baseurl") ?>/user/create?locale=da'>
+                        <a href='<?php echo $globalConfig->getValue("brugerbase.baseurl") ?>/create?locale=da'>
                             <span class="tab">
                                 Ny l&aring;ner
                             </span>
