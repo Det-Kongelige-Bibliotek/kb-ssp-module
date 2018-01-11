@@ -73,7 +73,7 @@ class sspmod_KB_Auth_Process_FetchLocalAttributes  extends SimpleSAML_Auth_Proce
                 $this->setLocalAttributes($state['Attributes'], $users[0]);
             }
             if ($this->idps[$idp]['method'] === 'REGIONH') {
-                $state['Attributes']['loginID'] = Array('CUH-X'.$state['saml:sp:NameID']['Value']);
+                $state['Attributes']['loginID'] = Array('CUH-'.$state['saml:sp:NameID']->value);
                 $kbadgang = $state['Attributes']['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'][0];
                 if ($kbadgang === 'JA') {
                     $state['Attributes']['oid'] = Array('1.3.6.1.4.1.11356.2.3.17');
