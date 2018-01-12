@@ -28,7 +28,7 @@ include(SimpleSAML_Module::getModuleDir('KB').'/templates/includes/header.php');
                         <form action="?" class="form-horizontal" method="post" name="f">
                             <div class="form-group">
                                 <div >
-                                    <label for="username" class="control-label"><?php echo $this->t('{login:username}'); ?></label>
+                                    <label for="username" class="control-label"><?php echo $this->t('{KB:KB:username}'); ?></label>
                                 </div>
                                 <div >
                                     <input id="username" name="username" class="form-control" tabindex="1" placeholde="CPR eller L&Atilde;&yen;ner nr" required="required" type="password" value="<?php echo htmlspecialchars($this->data['username']); ?>"/>
@@ -36,7 +36,7 @@ include(SimpleSAML_Module::getModuleDir('KB').'/templates/includes/header.php');
                             </div>
                             <div class="form-group">
                                 <div >
-                                    <label for="password" class="control-label"><?php echo $this->t('{login:password}'); ?></label>
+                                    <label for="password" class="control-label"><?php echo $this->t('{KB:KB:password}'); ?></label>
                                 </div>
                                 <div >
                                     <input id="password" name="password" class="form-control" tabindex="1" placeholde="Adgangskode" required="required" type="password" <?php echo $this->t('{login:password}'); ?>/>

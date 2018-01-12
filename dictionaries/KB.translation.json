@@ -1,4 +1,10 @@
 {
+  "username": {
+    "da": "CPR eller 6-cifret lånernummer"
+  },
+  "password": {
+    "da": "Adgangskode"
+  },
   "renew_pass_header": {
     "da": "Din adgangskode udl\u00F8ber om DAYS dage - vi opfordrer dig til at forny den med det samme"
   },

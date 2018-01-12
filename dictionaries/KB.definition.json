@@ -1,4 +1,6 @@
 {
+  "username": {"en": "CPR or 6-digit user ID"},
+  "password": {"en": "Password"},
   "renew_pass_header": {"en": "Your password expires in DAYS days - we advise you to change it now."},
   "renew_error_header": {"en": "Error"},
   "renew_pass_text": {"en": "The password must be at least 8 characters and consist of both letters and numbers. Your new password must not be the same as your old password."},
