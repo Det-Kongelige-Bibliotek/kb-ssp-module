@@ -112,7 +112,6 @@ class sspmod_KB_IdPDisco
         $this->session = SimpleSAML_Session::getSessionFromRequest();
         $this->instance = $instance;
         $this->metadataSets = $metadataSets;
-
         $this->log('Accessing discovery service.');
 
         // standard discovery service parameters
@@ -180,7 +179,7 @@ class sspmod_KB_IdPDisco
      */
     protected function getCookie($name)
     {
-        $prefixedName = 'idpdisco_'.$this->instance.'_'.$name;
+        $prefixedName = 'idpdisco_saml_'.$name;
         if (array_key_exists($prefixedName, $_COOKIE)) {
             return $_COOKIE[$prefixedName];
         } else {
@@ -200,7 +199,7 @@ class sspmod_KB_IdPDisco
      */
     protected function setCookie($name, $value)
     {
-        $prefixedName = 'idpdisco_'.$this->instance.'_'.$name;
+        $prefixedName = 'idpdisco_saml_'.$name;
 
         $params = array(
             // we save the cookies for 90 days
@@ -229,11 +228,9 @@ class sspmod_KB_IdPDisco
         if ($idp === null) {
             return null;
         }
-
         if (!$this->config->getBoolean('idpdisco.validate', true)) {
             return $idp;
         }
-
         foreach ($this->metadataSets as $metadataSet) {
             try {
                 $this->metadata->getMetaData($idp, $metadataSet);
@@ -302,20 +299,17 @@ class sspmod_KB_IdPDisco
             return null;
         }
 
-        if ($this->getCookie('remember') === '1') {
-            $this->log('Return previously saved IdP because of remember cookie set to 1');
+        if ($this->getCookie('remember') === '1' || $this-isPassive) {
+            $this->log('Return previously saved IdP because of remember cookie set to 1 or because of isPassive');
             $prevIdP =  $this->getPreviousIdP();
         }
 
-        if ($this->isPassive) {
-            $this->log('Return previously saved IdP because of isPassive');
-            $prevIdP = $this->getPreviousIdP();
-        }
+	$IDPList = $this->getScopedIDPList();
+        if (!empty($IDPList) && !array_key_exists($prevIdP,$IDPList)) {
+            return null;
+	}
 
-        if (($prevIdP != null) && array_key_exists($prevIdP,$this->getScopedIDPList()))
-            return $prevIdP;
-
-        return null;
+        return $prevIdP;
     }
 
 
