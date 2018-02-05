@@ -179,7 +179,8 @@ class sspmod_KB_IdPDisco
      */
     protected function getCookie($name)
     {
-        $prefixedName = 'idpdisco_saml_'.$name;
+	$prefixedName = 'idpdisco_'.$this->instance.'_'.$name;
+
         if (array_key_exists($prefixedName, $_COOKIE)) {
             return $_COOKIE[$prefixedName];
         } else {
@@ -199,7 +200,7 @@ class sspmod_KB_IdPDisco
      */
     protected function setCookie($name, $value)
     {
-        $prefixedName = 'idpdisco_saml_'.$name;
+	$prefixedName = 'idpdisco_'.$this->instance.'_'.$name;
 
         $params = array(
             // we save the cookies for 90 days
