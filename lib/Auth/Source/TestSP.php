@@ -1,6 +1,6 @@
 <?php
 
-class sspmod_saml_Auth_Source_SP extends SimpleSAML_Auth_Source {
+class sspmod_KB_Auth_Source_TestSP extends SimpleSAML_Auth_Source {
 
 	/**
 	 * The entity ID of this SP.
