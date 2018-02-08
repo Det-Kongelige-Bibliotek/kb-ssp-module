@@ -326,8 +326,8 @@ class sspmod_KB_Auth_Source_TestSP extends sspmod_saml_Auth_Source_SP {
 		assert('is_string($idp)');
 
 		if (strpos($idp,'birk.wayf.dk') !== false) {
-			$idp = 'http://bridge-local.kb.dk/simplesaml/saml2/idp/metadata.php';
 			$state['saml:IDPList'] = array($idp);
+			$idp = 'http://bridge-local.kb.dk/simplesaml/saml2/idp/metadata.php';
 		}
 
 		$idpMetadata = $this->getIdPMetadata($idp);
