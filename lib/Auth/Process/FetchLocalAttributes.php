@@ -81,6 +81,9 @@ class sspmod_KB_Auth_Process_FetchLocalAttributes  extends SimpleSAML_Auth_Proce
                 // this attribute causes problems for the cas server
                 unset($state['Attributes']['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']);
             }
+            if ($this->idps[$idp]['method'] === 'SKIP') {
+
+            }
         } else {
             SimpleSAML_Logger::error("Fetch attributes not configured for "+$idp);
             throw new SimpleSAML_Error_Error("CONFIGERROR");
