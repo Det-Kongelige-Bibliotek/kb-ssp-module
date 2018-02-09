@@ -2,7 +2,7 @@
 class sspmod_KB_Auth_Process_FetchLocalAttributes  extends SimpleSAML_Auth_ProcessingFilter{
     private $brugerbaseBaseUrl;
     private $idps;
-
+    private $skip_for;
 
     public function __construct($config, $reserved)
     {
@@ -12,6 +12,12 @@ class sspmod_KB_Auth_Process_FetchLocalAttributes  extends SimpleSAML_Auth_Proce
         assert('is_array($this->idps)');
         $this->brugerbaseBaseUrl = $config['brugerbaseBaseURL'];
         assert('$this->brugerbaseBaseUrl');
+        if (array_key_exists('skip.for',$config)) {
+            assert('is_array($config["skip.for"])');
+            $this->skip_for = $config['skip.for'];
+        } else {
+            $this->skip_for = array();
+        }
     }
 
 
@@ -22,6 +28,9 @@ class sspmod_KB_Auth_Process_FetchLocalAttributes  extends SimpleSAML_Auth_Proce
      */
     public function process(&$state) {
         $idp = $state['saml:sp:IdP'];
+        if (array_key_exists('core:SP',$state['saml:sp:State']) && in_array($state['saml:sp:State']['core:SP'],$this->skip_for)) {
+            return;
+        }
         $brugerbase = new sspmod_KB_BrugerbaseClient($this->brugerbaseBaseUrl);
         if (array_key_exists($idp,$this->idps )) {
             $state['Attributes']['remoteInstitution'] = array($this->idps[$idp]['name']);
