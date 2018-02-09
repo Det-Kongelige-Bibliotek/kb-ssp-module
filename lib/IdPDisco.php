@@ -28,7 +28,7 @@ class sspmod_KB_IdPDisco extends SimpleSAML_XHTML_IdPDisco
             return null;
         }
 
-        if ($this->getCookie('remember') === '1' || $this-isPassive) {
+        if ($this->getCookie('remember') === '1' || $this->isPassive) {
             $this->log('Return previously saved IdP because of remember cookie set to 1 or because of isPassive ');
             $prevIdP =  $this->getPreviousIdP();
         }
