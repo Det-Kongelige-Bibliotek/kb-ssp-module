@@ -5,6 +5,8 @@
 class sspmod_KB_IdPDisco extends SimpleSAML_XHTML_IdPDisco
 {
 
+    private $isPassive = false;
+
     public function __construct(array $metadataSets, $instance)
     {
         parent::__construct($metadataSets,$instance);
