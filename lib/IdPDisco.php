@@ -5,7 +5,7 @@
 class sspmod_KB_IdPDisco extends SimpleSAML_XHTML_IdPDisco
 {
 
-    private $isPassive = false;
+    private $isPassiveLocal = false;
 
     public function __construct(array $metadataSets, $instance)
     {
@@ -13,7 +13,7 @@ class sspmod_KB_IdPDisco extends SimpleSAML_XHTML_IdPDisco
 
         if (array_key_exists('isPassive', $_GET)) {
             if ($_GET['isPassive'] === 'true') {
-                $this->isPassive = true;
+                $this->isPassiveLocal = true;
             }
         }
     }
@@ -30,7 +30,7 @@ class sspmod_KB_IdPDisco extends SimpleSAML_XHTML_IdPDisco
             return null;
         }
 
-        if ($this->getCookie('remember') === '1' || $this->isPassive) {
+        if ($this->getCookie('remember') === '1' || $this->isPassiveLocal ) {
             $this->log('Return previously saved IdP because of remember cookie set to 1 or because of isPassive ');
             $prevIdP =  $this->getPreviousIdP();
         }
