@@ -109,7 +109,7 @@
     "da": "Vælg hvordan du vil logge ind"
   },
   "nolink_header" : {
-    "da": "Vi kunne ikke finde dit RUC brugernavn"
+    "da": "Vi kunne ikke finde dit NAME brugernavn"
   },
   "nolink_text" : {
     "da": "<p>Hvis du ikke er registreret som låner ved Det Kgl. Bibliotek kan du <a href=\"CREATEURL\"> Registrere dig som bruger her </a> Husk at vælge studerede eller ansat ved RUC og angive dit RUC brugernavn</p><p>Hvis du allerede er registreret som låner kan du tilføje dit RUC brugernavn på <a href=\"EDITURL\">EDITURL</a></p>"

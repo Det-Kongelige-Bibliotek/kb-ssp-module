@@ -67,6 +67,7 @@ class sspmod_KB_Auth_Process_FetchLocalAttributes  extends SimpleSAML_Auth_Proce
                 SimpleSAML_Logger::info('local users '.var_export($users,TRUE));
                 if ($users == NULL) {
                     $state['KB:remoteID'] = $value;
+                    $state['KB:idpName'] = $this->idps[$idp]['name'];
                     $stateId  = SimpleSAML_Auth_State::saveState($state, 'KB:fetchlocal');
                     \SimpleSAML\Utils\HTTP::redirectTrustedURL(
                         \SimpleSAML\Utils\HTTP::addURLParameters(
