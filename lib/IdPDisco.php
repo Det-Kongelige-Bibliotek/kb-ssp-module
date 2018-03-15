@@ -29,14 +29,13 @@ class sspmod_KB_IdPDisco extends SimpleSAML_XHTML_IdPDisco
             // saving of IdP choices is disabled
             return null;
         }
-
         if ($this->getCookie('remember') === '1' || $this->isPassiveLocal ) {
             $this->log('Return previously saved IdP because of remember cookie set to 1 or because of isPassive ');
             $prevIdP =  $this->getPreviousIdP();
         }
 
 	    $IDPList = $this->getScopedIDPList();
-        if (!empty($IDPList) && !array_key_exists($prevIdP,$IDPList)) {
+        if (!empty($IDPList) && !in_array($prevIdP,$IDPList)) {
             $this->log('Previously saved IdP is not ind scoped IDPList');
             $this->setCookie('remember', '0');
             return null;
