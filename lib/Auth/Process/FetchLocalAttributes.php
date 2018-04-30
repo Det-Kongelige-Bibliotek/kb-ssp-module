@@ -49,7 +49,9 @@ class sspmod_KB_Auth_Process_FetchLocalAttributes  extends SimpleSAML_Auth_Proce
             if ($this->idps[$idp]['method'] === 'ATTRIBUTE') {
                 $remoteAttribute = $this->idps[$idp]['remoteAttribute'];
                 $localAttribute = $this->idps[$idp]['localAttribute'];
-                $verificationAttribute = $this->idps[$idp]['verificationAttribute'];
+                $verificationAttribute = NULL;
+                if (array_key_exists('verificationAttribute',$this->idps[$idp]))
+                    $verificationAttribute = $this->idps[$idp]['verificationAttribute'];
                 assert('is_string($remoteAttribute)');
                 assert('is_string($localAttribute)');
                 assert('is_string($verificationAttribute)');
