@@ -35,7 +35,8 @@
   "remember" : { "en": "Remember my choice"},
   "selectidp" : {"en": "Select your institution"},
   "selectidp_full" : {"en": "Please select how to login"},
-  "nolink_header" : {"en": "RUC user-id not found" },
-  "nolink_text" : {"en": "<p>If you have not registrered as a loaner at Royal Danish Library you can <a href=\"CREATEURL\"> use the online registration form </a> Choose student ar RUC</p><p>If you are allready registred as a loaner you can add you RUC user-id here <a href=\"EDITURL\">EDITURL</a></p>"
-  }
+  "nolink_header_RUC" : {"en": "RUC user-id not found" },
+  "nolink_text_RUC" : {"en": "<p>If you have not registrered as a loaner at Royal Danish Library you can <a href=\"CREATEURL\"> use the online registration form </a> Choose student ar RUC</p><p>If you are allready registred as a loaner you can add you RUC user-id here <a href=\"EDITURL\">EDITURL</a></p>"},
+  "nolink_header_KU" : {"en": "We could not find your KU username." },
+  "nolink_text_KU" : {"en": "<p>If you are employed by KU and want to have material delivered to your institutional address, use your KB login (6-digit credentials) as before.</p><p>If you are not a registered borrower at The Royal Danish Library, you <a href=\"CREATEURL\">can register as a user</a> either as a student, private user or KU employee WITHOUT delivery address. Then you will be able to log in with your KU login within 24 hours.</p>" }
 }

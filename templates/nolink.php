@@ -9,8 +9,8 @@ $globalConfig = SimpleSAML_Configuration::getInstance();
             <div class="col-md-6 col-md-offset-3">
                 <div class="well well-lg info ">
                     <div id="msg" class="alert alert-success">
-                        <h2><?php echo $this->t('{KB:KB:nolink_header}', array('NAME' => $this->data['name'])) ?></h2>
-                        <div><?php echo $this->t('{KB:KB:nolink_text}', array('CREATEURL' => $globalConfig->getValue('brugerbase.baseurl').'/create', 'EDITURL' => $globalConfig->getValue('brugerbase.baseurl').'/edit')) ?></div>
+                        <h2><?php echo $this->t('{KB:KB:nolink_header_'.$this->data['name'].'}', array('NAME' => $this->data['name'])) ?></h2>
+                        <div><?php echo $this->t('{KB:KB:nolink_text_'.$this->data['name'].'}', array('CREATEURL' => $globalConfig->getValue('brugerbase.baseurl').'/create', 'EDITURL' => $globalConfig->getValue('brugerbase.baseurl').'/edit')) ?></div>
                     </div>
                 </div>
             </div>
