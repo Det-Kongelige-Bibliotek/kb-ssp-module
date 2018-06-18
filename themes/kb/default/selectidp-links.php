@@ -18,7 +18,7 @@ foreach ($this->data['idplist'] as $idpentry) {
 ?>
 <section id="content">
     <div class="container">
-        <div class="col-md-6 col-md-offset-3">
+        <div class="col-md-12">
             <div class="row">
                 <div class="well well-lg info ">
                     <div>
@@ -46,7 +46,7 @@ foreach ($this->data['idplist'] as $idpentry) {
                             echo '<div class="row">';
                             foreach ($this->data['idplist'] as $idpentry) {
                                     if (!array_key_exists('copy.of',$idpentry)) {
-                                        echo '<div class="col-sm-12"><button type="submit" class="btn  btn-wizard" name="idp_' . htmlspecialchars($idpentry['entityid']) . '">';
+                                        echo '<div class="col-sm-4"><button type="submit" class="btn  btn-wizard" name="idp_' . htmlspecialchars($idpentry['entityid']) . '">';
                                         if (array_key_exists('icon', $idpentry) && $idpentry['icon'] !== null) {
                                             $iconUrl = SimpleSAML_Module::getModuleURL($idpentry['icon']);
                                             echo '<img class="idp-logo" src="' . $iconUrl . '">';
@@ -58,12 +58,12 @@ foreach ($this->data['idplist'] as $idpentry) {
                                         echo '</button></div>';
                                     } else {
                                         $copyIdp = $this->data['idplist'][$idpentry['copy.of']];
-                                        echo '<div class="col-sm-12"><button type="submit" class="btn  btn-wizard" name="idp_' . htmlspecialchars($copyIdp['entityid']) . '">';
+                                        echo '<div class="col-sm-4"><button type="submit" class="btn  btn-wizard" name="idp_' . htmlspecialchars($copyIdp['entityid']) . '">';
                                         if (array_key_exists('icon', $idpentry) && $idpentry['icon'] !== null) {
                                             $iconUrl = SimpleSAML_Module::getModuleURL($idpentry['icon']);
                                             echo '<img class="idp-logo" src="' . $iconUrl . '">';
                                         }
-                                        echo '<strong>' . $this->t('idpname_' . $copyIdp['entityid']) . '</strong>';
+                                        echo '<strong>' . $this->t('idpname_' . $idpentry['entityid']) . '</strong>';
                                         if (!empty($idpentry['description'])) {
                                             echo '	<small>' . htmlspecialchars($this->t('idpdesc_' . $idpentry['entityid'])) . '</small>';
                                         }
