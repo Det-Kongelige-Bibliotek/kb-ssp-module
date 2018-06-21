@@ -45,19 +45,30 @@ foreach ($this->data['idplist'] as $idpentry) {
 
                             echo '<div class="row">';
                             foreach ($this->data['idplist'] as $idpentry) {
-				    if (array_key_exists('new.row',$idpentry) && $idpentry['new.row'] === TRUE) {
-					echo '</div>'; 
-				        echo '<div class="row">';
-				    }
-				    if (array_key_exists('div.class',$idpentry) && $idpentry['div.class'] !== '') {
-					$divclass = $idpentry['div.class'];
-				    } else {
-					$divclass = 'col-sm-8';
-				    }		
+				                if (array_key_exists('new.row',$idpentry) && $idpentry['new.row'] === TRUE) {
+					                echo '</div>';
+				                    echo '<div class="row">';
+				                }
+				                if (array_key_exists('div.class',$idpentry) && $idpentry['div.class'] !== '') {
+					                $divclass = $idpentry['div.class'];
+				                } else {
+					                $divclass = 'col-sm-8';
+				                }
+                                 $iconUrl = null;
+                                 if ($this->getLanguage() === 'en') {
+                                     if (array_key_exists('icon_en', $idpentry) && $idpentry['icon_en'] !== null) {
+                                         $iconUrl = SimpleSAML_Module::getModuleURL($idpentry['icon_en']);
+                                     }
+                                 }
+                                 if ($iconUrl === null) {
+                                     if (array_key_exists('icon', $idpentry) && $idpentry['icon'] !== null) {
+                                         $iconUrl = SimpleSAML_Module::getModuleURL($idpentry['icon']);
+                                     }
+                                 }
+
                                     if (!array_key_exists('copy.of',$idpentry)) {
                                         echo '<div class="'.$divclass.'"><button type="submit" class="btn  btn-wizard" name="idp_' . htmlspecialchars($idpentry['entityid']) . '">';
-                                        if (array_key_exists('icon', $idpentry) && $idpentry['icon'] !== null) {
-                                            $iconUrl = SimpleSAML_Module::getModuleURL($idpentry['icon']);
+                                        if ($iconUrl !== null) {
                                             echo '<img class="idp-logo" src="' . $iconUrl . '">';
                                         }
                                         echo '<strong>' . $this->t('idpname_' . $idpentry['entityid']) . '</strong>';
@@ -68,8 +79,7 @@ foreach ($this->data['idplist'] as $idpentry) {
                                     } else {
                                         $copyIdp = $this->data['idplist'][$idpentry['copy.of']];
                                         echo '<div class="'.$divclass.'"><button type="submit" class="btn  btn-wizard" name="idp_' . htmlspecialchars($copyIdp['entityid']) . '">';
-                                        if (array_key_exists('icon', $idpentry) && $idpentry['icon'] !== null) {
-                                            $iconUrl = SimpleSAML_Module::getModuleURL($idpentry['icon']);
+                                        if ($iconUrl !== null) {
                                             echo '<img class="idp-logo" src="' . $iconUrl . '">';
                                         }
                                         echo '<strong>' . $this->t('idpname_' . $idpentry['entityid']) . '</strong>';
@@ -79,7 +89,7 @@ foreach ($this->data['idplist'] as $idpentry) {
                                         echo '</button></div>';
                                     }
                             }
-			    echo '</div>'; 	 
+			                echo '</div>';
                             ?>
                         </form>
                     </div>
