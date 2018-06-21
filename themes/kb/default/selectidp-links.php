@@ -18,7 +18,7 @@ foreach ($this->data['idplist'] as $idpentry) {
 ?>
 <section id="content">
     <div class="container">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="row">
                 <div class="well well-lg info ">
                     <div>
