@@ -1,6 +1,6 @@
 <?php
 $globalConfig = SimpleSAML_Configuration::getInstance();
-\SimpleSAML\Utils\HTTP::setCookie('idpdisco_saml_remember', '0', array(
+\SimpleSAML\Utils\HTTP::setCookie('kbidpdisco_saml_remember', '0', array(
     'lifetime' => (60 * 60 * 24 * 90),
     'path'     => '/simplesaml/',
     'httponly' => false,
